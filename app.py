@@ -22,9 +22,11 @@ import os
 
 app = Flask(__name__)
 
-cart = {}
+cart = { # user added items
 
-menu = {
+} 
+
+menu = { #items and prices
     "Soup": 1,
     "Meal": 5,
     "Drink": 3,
