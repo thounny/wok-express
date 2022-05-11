@@ -66,19 +66,16 @@ html, body {
     
     position: absolute;
     top: 35% !important;
-    right: 20%;
-    width: 50%;
+    margin-right: auto;
+    margin-left: auto;
     height: 90vh;
 }
 
 img {
     opacity: 1;
     position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    z-index: 0;
+    margin-right: auto;
+    margin-left: auto;
     height: 800px;
     width: 800px;
 }
@@ -130,11 +127,24 @@ img {
     .navbar {
         display: none;
     }
+    .container {
+        top: 60%;
+    }
+    .blocks {
+        top: 60%;
+    }
+    .circle-shape {
+        top: 45em;
+    }
     .circle-shape-3 {
         top: 10%;
     }
     .circle-shape-2 {
         mix-blend-mode: exclusion;
+    }
+    .img {
+        height: 500px;
+        width: 500px;
     }
 }
 
