@@ -63,10 +63,10 @@ html, body {
 }
 
 .wrapper-img {
-    overflow: hidden;
+    
     position: absolute;
     top: 35% !important;
-    right: 18%;
+    right: 20%;
     width: 50%;
     height: 90vh;
 }
@@ -79,8 +79,8 @@ img {
     right: 0;
     left: 0;
     z-index: 0;
-    height: 1000px;
-    width: 1000px;
+    height: 800px;
+    width: 800px;
 }
 
 .site-logo {
