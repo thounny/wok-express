@@ -1,3 +1,4 @@
+from functools import cached_property
 import flask 
 from flask import Flask, redirect, url_for, render_template
 import os
@@ -53,7 +54,7 @@ def order(): #loads order page
 
 @app.route("/order_more", methods=["POST"])
 def order_more(): #loads order page
-   return render_template("order.html", cart = cart) 
+   return render_template("order.html", cart = shopping_cart) 
 
 @app.route("/add_item", methods=["POST"])
 def add_item():
@@ -65,7 +66,9 @@ def add_item():
 
 @app.route("/clear_cart", methods=["POST"])
 def clear_cart(): #loads order page
-    return render_template("cart.html", cart = {})
+    global shopping_cart
+    shopping_cart={}
+    return render_template("cart.html", cart = shopping_cart)
 
 if __name__ == "__main__":
     app.run()

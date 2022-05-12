@@ -14,6 +14,9 @@
     <p>Nothing added to cart</p>
     {% endif %}
     </p>
+    <form id="cart" method="POST" action="/order_more">
+        <input type="submit" value="Order More">
+    </form>
     <form id="cart" method="POST" action="/clear_cart">
         <input type="submit" value="Clear Cart">
     </form>
