@@ -24,6 +24,11 @@
         <input type="number" id="quantity" name="quantity" min="1" max="99" value="1">
         <input type="submit" value="Add to Cart">
     </form>
+    <h4>View Cart:</h4>
+    <form id="cart" method="POST" action="/cart">
+        <input type="hidden" id="cart" name="cart" value="{{ cart }}">
+        <input type="submit" value="Cart">
+    </form>
 
 
     <p>
