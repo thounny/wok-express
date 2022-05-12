@@ -22,31 +22,50 @@ import os
 
 app = Flask(__name__)
 
-cart = { # user added items
-
-} 
+# user added items go here
+shopping_cart = {} 
 
 menu = { #items and prices
     "Soup": 1,
-    "Meal": 5,
     "Drink": 3,
+    "Meal": 5,
 }
 
 @app.route("/")
 def home():
     return render_template("index.html")
 
-@app.route("/order", methods=["POST"])
+@app.route("/cart", methods=["POST"])
+def cart():
+    global shopping_cart
+#    current_cart = flask.request.form.get("cart")
+    #filtered_cart = str(shopping_cart).replace("{","").replace("}", "").replace("'", "")
+    filtered_cart = (str(shopping_cart).replace("{","").replace("}", "").replace("'", "")).split(", ")
+    list = []
+    for i in filtered_cart:
+        list.append( (i.split(": "))[0] + " (x" + (i.split(": "))[1] + ")")
+
+    return render_template("cart.html", cart = list)
+
+@app.route("/order")
 def order(): #loads order page
-   return render_template("order.html") 
+   return render_template("order.html")
+
+@app.route("/order_more", methods=["POST"])
+def order_more(): #loads order page
+   return render_template("order.html", cart = cart) 
 
 @app.route("/add_item", methods=["POST"])
 def add_item():
-    global cart
+    global shopping_cart
     food_item = flask.request.form.get("food_item") #what item user orders
     quantity = flask.request.form.get("quantity") # how much of item user orders
-    cart.update({food_item : quantity})
-    return render_template("order.html", cart = cart)
+    shopping_cart.update({food_item: quantity})
+    return render_template("order.html", cart = shopping_cart)
+
+@app.route("/clear_cart", methods=["POST"])
+def clear_cart(): #loads order page
+    return render_template("cart.html", cart = {})
 
 if __name__ == "__main__":
     app.run()
