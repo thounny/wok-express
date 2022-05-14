@@ -41,12 +41,24 @@ def cart():
     global shopping_cart
 #    current_cart = flask.request.form.get("cart")
     #filtered_cart = str(shopping_cart).replace("{","").replace("}", "").replace("'", "")
-    filtered_cart = (str(shopping_cart).replace("{","").replace("}", "").replace("'", "")).split(", ")
-    list = []
-    for i in filtered_cart:
-        list.append( (i.split(": "))[0] + " (x" + (i.split(": "))[1] + ")")
-
-    return render_template("cart.html", cart = list)
+    items = make_item_list()
+    prices = make_price_list() 
+    quantities = make_quantity_list()
+    print(items)
+    print(type(items))
+    print(prices)
+    print(type(prices))
+    print(quantities)
+    print(type(quantities))
+    return render_template(
+        "cart.html",
+        items =  items,
+        prices = prices, 
+        quantities = quantities
+        )
+    #     item_list = make_list.index(item_list)
+    # price_list = make_list.index(price_list)
+    # quantity_list = make_list.index(quantity_list)
 
 @app.route("/order")
 def order(): #loads order page
@@ -64,11 +76,74 @@ def add_item():
     shopping_cart.update({food_item: quantity})
     return render_template("order.html", cart = shopping_cart)
 
+@app.route("/remove_item", methods=["POST"])
+def remove_item():
+    global shopping_cart
+    print(shopping_cart)
+    print(type(shopping_cart))
+    delete_this = flask.request.form.get("delete_this")
+    shopping_cart = shopping_cart.pop(delete_this)  
+    item_list = make_item_list()
+    price_list = make_price_list()
+    quantity_list = make_quantity_list()
+    return render_template(
+        "cart.html", 
+        items = item_list, 
+        prices = price_list, 
+        quantity_list = quantity_list
+        )
+
 @app.route("/clear_cart", methods=["POST"])
 def clear_cart(): #loads order page
     global shopping_cart
     shopping_cart={}
-    return render_template("cart.html", cart = shopping_cart)
+    item_list ={}
+    price_list = {}
+    quantity_list = {}
+    return render_template(
+        "cart.html",
+        items = item_list,
+        prices = price_list, 
+        quantities = quantity_list
+        )
+
+def make_item_list():
+    global shopping_cart
+    item_list = []
+    if shopping_cart:
+        filtered_cart = (str(shopping_cart).replace("{","").replace("}", "").replace("'", "")).split(", ")
+        for i in filtered_cart:
+            item = str((i.split(": "))[0]) 
+            item_list.append(item )
+    else:
+        pass
+    return list(item_list)
+    
+def make_price_list():
+    global shopping_cart
+    price_list = []
+    if shopping_cart:
+        filtered_cart = (str(shopping_cart).replace("{","").replace("}", "").replace("'", "")).split(", ")
+        for i in filtered_cart:
+            item = str((i.split(": "))[0])
+            price = menu.get(item)
+            price_list.append(price)
+    else:
+        pass
+    return list(price_list)
+    
+def make_quantity_list():
+    global shopping_cart
+    quantity_list = []
+    if shopping_cart:
+        filtered_cart = (str(shopping_cart).replace("{","").replace("}", "").replace("'", "")).split(", ")
+        for i in filtered_cart:
+            quantity = int((i.split(": "))[1])
+            quantity_list.append(quantity)
+    else:
+        pass
+    return list(quantity_list)
+    
 
 if __name__ == "__main__":
     app.run()
