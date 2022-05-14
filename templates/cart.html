@@ -4,15 +4,30 @@
 
 <body>
     <p>
+        {% set total = 0 %}
         Cart:<br>
-        {% if cart %}
-
-        {% for i in range(cart | length) %}
-        {{ cart[i] }}<br>
-        {% endfor %}
-        {% else %}
+        {% if items %}
+        {% for i in range((items|length)) %}
+        {% set total = total + (prices[i] * quantities[i]) %}
+        --
+        ${{prices[i]}} {{items[i]}} (x{{quantities[i]}})
+    <form id="cart" method="POST" action="/order_more">
+        <input type="number" id="quantity" name="quantity" min="1" max="99" value="1"><br>
+        <input type="submit" value="Change Quanitiy">
+    </form>
+    <form id="remove_item" method="POST" action="/remove_item">
+        <input type="hidden" id="delete_this" name="delete_this" value={{items[i]}}>
+        <input type="submit" value="Remove Item">
+    </form>
+    Total in for loop:<br>
+    {{ total }}
+    <br>
+    {% endfor %}
+    {% else %}
     <p>Nothing added to cart</p>
     {% endif %}
+    Total outside of for loop:
+    {{ total }}
     </p>
     <form id="cart" method="POST" action="/order_more">
         <input type="submit" value="Order More">
