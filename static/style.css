@@ -30,7 +30,7 @@ body {
 .lang {
     right: 0;
     font-family: "Libre Baskerville";
-    color: #646464;
+    color: yellow;
 }
 
 .container-left {
@@ -49,7 +49,7 @@ body {
     width: 50%;
     height: 100vh;
     left: 50%;
-    background: url(assets/tayo.jpg) no-repeat 50% 50%;
+    background: url(/static/tayo.jpg) no-repeat 50% 50%;
     background-size: 110%;
     animation: animatedBackground1 6s cubic-bezier(0.19, 1, 0.22, 1);
     animation-delay: 5s;
@@ -71,7 +71,7 @@ body {
     transform: translate(-50%, -50%);
     width: 300px;
     height: 400px;
-    background: url(assets/tayo.jpg) no-repeat 50% 50%;
+    background: url(/static/tayo.jpg) no-repeat 50% 50%;
     background-size: 210%;
     animation: animatedBackground2 6s cubic-bezier(0.19, 1, 0.22, 1);
     animation-delay: 5s;
@@ -117,7 +117,7 @@ body {
     text-align: center;
     text-transform: uppercase;
     font-family: "Libre Baskerville";
-    background: #8f8776;
+    background: yellow;
 }
 
 .social-media {
@@ -136,12 +136,12 @@ body {
 }
 
 .social-media ul li a {
-    color: #8f8776;
+    color: #8f7676;
 }
 
 .left-bottom-text {
     position: absolute;
-    color: grey;
+    color: yellow;
     font-size: 48px;
     font-family: "Libre Baskerville";
     text-transform: uppercase;
