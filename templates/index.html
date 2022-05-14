@@ -6,115 +6,77 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Wok Express | PTC</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
     <link rel="stylesheet" href={{ url_for( 'static' , filename='style.css' ) }} />
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
 </head>
 
 
 <body>
-    <div class="site-logo">Wok Express</div>
-    <div class="navbar">
-        <div class="site-info">menu / location</div>
-        <div class="site-menu">
-            <div class="menu-item">about</div>
-            <div class="menu-item"><a href="order">Order Now</a></div>
-            <div class="menu-item">reviews</div>
-            <div class="menu-item">contact</div>
+    <div class="loader">
+        <marquee scrollamount="10" direction="right">Wok Express | Wok Express |
+            Wok Express | Wok Express | Wok Express
+        </marquee>
+        <marquee scrollamount="30" direction="left">Wok Express | Wok Express |
+            Wok Express | Wok Express | Wok Express
+        </marquee>
+        <marquee scrollamount="20" direction="right">Wok Express | Wok Express |
+            Wok Express | Wok Express | Wok Express
+        </marquee>
+        <marquee scrollamount="40" direction="">Wok Express | Wok Express |
+            Wok Express | Wok Express | Wok Express
+        </marquee>
+        <div class="intro">
+            <h1 class="intro-title">Wok Express</h1>
         </div>
     </div>
-    <div class="foodreel">view food</div>
+
     <div class="container">
-        <div class="wrapper-img">
-            <div class="box"></div>
-            <div>
-                <img class="image" src="static/wok-sticker.png" alt="wok-express-sticker" />
+        <div class="logo">wok express</div>
+        <div class="container-left">
+            <div class="lang">
+                <img src="assets/wok-sticker-new.png" class="img" />
+            </div>
+            <div class="left-img-cap">
+                Best Food <br />
+                <span>Great Value,</span>
+            </div>
+            <div class="container-left-img"></div>
+            <div class="left-img-btn">View Menu</div>
+            <div class="left-bottom-text">
+                /Peachtree City
+            </div>
+
+            <div class="social-media">
+                <ul>
+                    <li>
+                        <a href="#">
+                            <ion-icon name="call-outline"></ion-icon>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <ion-icon name="compass-outline"></ion-icon>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <ion-icon name="share-social-outline"></ion-icon>
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
-        <div class="circle-shape"></div>
-        <div class="circle-shape-2"></div>
-        <div class="circle-shape-3"></div>
-        <div class="blocks">
-            <div class="block-1 block">W</div>
-            <div class="block-2 block">O</div>
-            <div class="block-3 block">K</div>
+        <div class="container-right">
+            <div class="right-upper-text">
+                Dine in and <span>take out delivery.</span>
+            </div>
+            <div class="right-bottom-text">
+                Order Now
+            </div>
         </div>
     </div>
-
-    <script>
-        TweenMax.to(".block-1", 2, {
-            x: "-180",
-            y: "-100",
-            scale: "2.4",
-            ease: Expo.easeInOut,
-        });
-
-        TweenMax.to(".block-2", 2, {
-            x: "-180",
-            y: "200",
-            scale: "1.2",
-            ease: Expo.easeInOut,
-        });
-
-        TweenMax.to(".block-3", 2, {
-            x: "180",
-            y: "-240",
-            scale: "1.6",
-            ease: Expo.easeInOut,
-        });
-
-
-        TweenMax.to(".box", 2.4, {
-            y: "-100%",
-            ease: Expo.easeInOut,
-        });
-
-        TweenMax.from(".circle-shape", 2.4, {
-            scale: "0",
-            ease: Expo.easeInOut,
-        });
-        TweenMax.from(".circle-shape-2", 2.4, {
-            scale: "0",
-            ease: Expo.easeInOut,
-        });
-        TweenMax.from(".circle-shape-3", 2.4, {
-            scale: "0",
-            ease: Expo.easeInOut,
-        });
-        TweenMax.from(".navbar > div", 1.6, {
-            opacity: 0,
-            y: 60,
-            ease: Expo.easeInOut,
-            delay: 0.6,
-        });
-        TweenMax.from(".site-logo", 1.6, {
-            opacity: 0,
-            y: 40,
-            ease: Expo.easeInOut,
-            delay: 0.6,
-        });
-        TweenMax.from(".foodreel", 1.6, {
-            opacity: 0,
-            y: 40,
-            ease: Expo.easeInOut,
-            delay: 0.6,
-        });
-        TweenMax.from(".image", 1.6, {
-            opacity: 0,
-            y: 40,
-            ease: Expo.easeInOut,
-            delay: 0.6,
-        });
-        TweenMax.staggerFrom(
-            ".site-menu > div",
-            1,
-            {
-                opacity: 0,
-                y: 60,
-                ease: Power2.easeOut,
-            },
-            0.2
-        );
-    </script>
 </body>
-
+<script src="main.js"></script>
 </html>
