@@ -8,9 +8,7 @@
         Cart:<br>
         {% if items %}
         {% for i in range((items|length)) %}
-        Before : {{total}}
         {% set total = total + (prices[i] * quantities[i]) %}
-        After : {{total}}
         --
         ${{prices[i]}} {{items[i]}} (x{{quantities[i]}})
     <form id="cart" method="POST" action="/order_more">
@@ -21,14 +19,14 @@
         <input type="hidden" id="delete_this" name="delete_this" value={{items[i]}}>
         <input type="submit" value="Remove Item">
     </form>
-    Total:<br>
+    Total in for loop:<br>
     {{ total }}
     <br>
     {% endfor %}
     {% else %}
     <p>Nothing added to cart</p>
     {% endif %}
-    Total:
+    Total outside of for loop:
     {{ total }}
     </p>
     <form id="cart" method="POST" action="/order_more">
