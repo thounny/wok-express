@@ -190,10 +190,6 @@ body {
 	bottom: 0;
 }
 
-.right-bottom-text:visited {
-    text-decoration: none;
-}
-
 @media (max-width: 990px) {
 	.container-left,
 	.container-right {
